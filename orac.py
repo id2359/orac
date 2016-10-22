@@ -4,6 +4,11 @@ from flask_ask import Ask, question, statement
 app = Flask(__name__)
 ask = Ask(app, "/")
 
+def get_briefing():
+    # get via some other means
+    return "This is a dummy briefing"
+
+
 @ask.launch
 def launched():
     return question("Orac launched")
@@ -17,6 +22,13 @@ def grovel():
     
     text = random.choice(grovelling)
     return statement(text).simple_card("Grovelling", text)
+
+
+@ask.intent("BriefingIntent")
+def briefing():
+    text = get_briefing()
+    return statement(text).simple_card("Briefing", text)
+    
 
 if __name__=="__main__":
     app.run(debug=True)
