@@ -12,7 +12,8 @@ def launched():
 def grovel():
     import random
     grovelling = ["How wonderful to speak with you again, Sir!",
-                  "It is an honour to serve you, sire!"]
+                  "It is an honour to serve you, sire!",
+                  "Greetings, Oh great one!"]
     
     text = random.choice(grovelling)
     return statement(text).simple_card("Grovelling", text)
